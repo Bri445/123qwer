@@ -1,0 +1,5 @@
+Question1: A critical region
+Answer: is a piece of code which only one process executes at a time
+
+Question2: The register context and stacks of a thread are deallocated when the thread
+Answer: terminates
