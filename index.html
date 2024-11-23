@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question-card {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-card h3 {
+            margin: 0;
+            color: #007bff;
+        }
+
+        .question-card p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .answer {
+            font-size: 14px;
+            color: #28a745;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Test Questions</h1>
+        <div id="questions-container"></div>
+    </div>
+
+    <script>
+        // Fetch the JSON data from your Netlify hosted URL
+        fetch('https://qwertyuhgvcsa.netlify.app/questions.json')
+            .then(response => response.json()) // Parse the JSON
+            .then(data => {
+                const questionsContainer = document.getElementById('questions-container');
+
+                // Loop through each question and display it
+                data.questions.forEach((item, index) => {
+                    // Create a new div to hold each question and answer
+                    const questionCard = document.createElement('div');
+                    questionCard.classList.add('question-card');
+                    
+                    // Create question text
+                    const questionElement = document.createElement('h3');
+                    questionElement.textContent = `Q${index + 1}: ${item.question}`;
+
+                    // Create answer text
+                    const answerElement = document.createElement('p');
+                    answerElement.innerHTML = `<strong>Answer:</strong> <span class="answer">${item.answer}</span>`;
+                    
+                    // Append question and answer to the question card
+                    questionCard.appendChild(questionElement);
+                    questionCard.appendChild(answerElement);
+
+                    // Append the question card to the container
+                    questionsContainer.appendChild(questionCard);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('questions-container').innerHTML = 'Failed to load questions.';
+            });
+    </script>
+
+</body>
+</html>
