@@ -1,0 +1,15 @@
+[
+    {
+        "question": "A critical region",
+        "answer": "is a piece of code which only one process executes at a time"
+    },
+    {
+        "question": "The register context and stacks of a thread are deallocated when the thread",
+        "answer": "terminates"
+    },
+    {
+        "question": "The most optimal scheduling algorithm is",
+        "answer": "All of the above"
+    }
+    // Add all other questions and answers here
+]
